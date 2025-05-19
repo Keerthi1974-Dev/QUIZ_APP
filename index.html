@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quiz App with 3D Video & Star Overlay</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Background 3D video -->
+  <video id="bg-video" autoplay muted loop playsinline>
+    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- Overlay for black transparent darkening -->
+  <div id="overlay"></div>
+
+  <!-- Subtle CSS stars -->
+  <div id="stars"></div>
+
+  <!-- Main app container -->
+  <div class="container" role="main">
+    <h1>Quiz App</h1>
+    <div class="subject-section" role="list">
+      <div class="subject-container">
+        <button class="subject-btn" onclick="startQuiz('math')" role="listitem">Mathematics</button>
+        <button class="subject-btn" onclick="startQuiz('history')" role="listitem">History</button>
+        <button class="subject-btn" onclick="startQuiz('polity')" role="listitem">Polity</button>
+        <button class="subject-btn" onclick="startQuiz('coding')" role="listitem">Coding</button>
+        <button class="subject-btn" onclick="startQuiz('english')" role="listitem">English</button>
+        <button class="subject-btn" onclick="startQuiz('gk')" role="listitem">General Knowledge</button>
+        <button class="subject-btn" onclick="startQuiz('science')" role="listitem">General Science</button>
+      </div>
+    </div>
+
+    <div class="quiz-section" aria-live="polite">
+      <div class="quiz-header">
+        <h2 id="subject-name"></h2>
+        <div id="current-question">Question 1</div>
+        <div id="score">Score: 0</div>
+      </div>
+      <div class="question-container">
+        <div id="question"></div>
+        <div id="options"></div>
+      </div>
+      <button class="next-btn" onclick="nextQuestion()" disabled id="next-btn" aria-disabled="true">Next</button>
+      <button class="result-btn" onclick="showResults()" style="display:none;" id="show-results-btn">Show Results</button>
+    </div>
+
+    <div class="results-section" aria-live="polite" aria-label="Quiz Results">
+      <h2>Quiz Results</h2>
+      <div id="results-summary"></div>
+      <button class="retry-btn" onclick="retryQuiz()">Retry Quiz</button>
+      <button class="back-btn" onclick="backToSubjects()">Back to Subjects</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,236 @@
+/* Reset & basics */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html, body {
+  height: 100%;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  color: #fff;
+  background: black;
+  position: relative;
+}
+
+/* Fullscreen video background */
+#bg-video {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: 0;
+  filter: brightness(0.4);
+  pointer-events: none;
+}
+
+/* Black transparent overlay above video for contrast */
+#overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.65);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Subtle starfield with small animated stars */
+#stars {
+  pointer-events: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2;
+  overflow: visible;
+  background: transparent;
+}
+.star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.8;
+  box-shadow: 0 0 4px 1px white;
+  animation-name: twinkle;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 0.3; }
+}
+
+/* Container styling with backdrop blur and glow shadows */
+.container {
+  position: relative;
+  max-width: 800px;
+  margin: 4rem auto 3rem;
+  padding: 2rem 3rem;
+  background: rgba(0,0,0,0.35);
+  border-radius: 14px;
+  box-shadow:
+    0 0 10px rgba(0, 123, 255, 0.6),
+    0 0 30px rgba(0, 123, 255, 0.4);
+  backdrop-filter: blur(12px);
+  z-index: 5;
+  text-align: center;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 0 10px #0099ff;
+  letter-spacing: 2px;
+}
+
+.subject-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.subject-btn {
+  flex: 1 1 28%;
+  min-width: 140px;
+  padding: 14px 0;
+  background: linear-gradient(135deg, #00aaff, #004466);
+  border: none;
+  border-radius: 12px;
+  color: #e0f7ff;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: 0 0 12px #00aaffa0;
+  transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+.subject-btn:hover,
+.subject-btn:focus {
+  background: linear-gradient(135deg, #004466, #00aaff);
+  transform: translateY(-4px);
+  box-shadow: 0 0 25px #00ccffaa;
+  outline: none;
+}
+
+.quiz-header {
+  font-weight: 700;
+  text-shadow: 0 0 8px #00aaffcc;
+  margin-bottom: 1rem;
+}
+
+#subject-name {
+  font-size: 2rem;
+  margin-bottom: 0.3rem;
+}
+#current-question,
+#score {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: #7ec8ff;
+}
+
+.question-container {
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #d0e9ff;
+  text-shadow: 0 0 6px #00aaffcc;
+}
+
+#options {
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.option-btn {
+  display: block;
+  width: 100%;
+  margin: 0.4rem 0;
+  padding: 13px 20px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  background-color: rgba(0, 123, 255, 0.5);
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 123, 255, 0.7);
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+.option-btn:hover:not(:disabled) {
+  background-color: rgba(0, 123, 255, 0.85);
+  box-shadow: 0 0 30px #00aaffcc;
+}
+.option-btn:disabled {
+  cursor: default;
+  opacity: 0.7;
+  box-shadow: none;
+}
+
+.next-btn, .result-btn, .retry-btn, .back-btn {
+  margin-top: 1.3rem;
+  padding: 12px 28px;
+  font-weight: 700;
+  font-size: 1.15rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(0, 123, 255, 0.7);
+  color: #fff;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  user-select: none;
+  display: inline-block;
+  min-width: 140px;
+}
+
+.next-btn {
+  background-color: #17a2b8;
+}
+.next-btn:hover:not(:disabled) {
+  background-color: #0f92a1;
+  box-shadow: 0 0 30px #17a2b8;
+}
+.next-btn:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.result-btn {
+  background-color: #28a745;
+}
+.result-btn:hover {
+  background-color: #208734;
+  box-shadow: 0 0 30px #28a745;
+}
+
+.retry-btn {
+  background-color: #ffc107;
+  color: #222;
+  box-shadow: 0 0 30px #ffc107;
+}
+.retry-btn:hover {
+  background-color: #e0a800;
+  box-shadow: 0 0 50px #ffc107;
+}
+
+.back-btn {
+  background-color: #6c757d;
+}
+.back-btn:hover {
+  background-color: #595f63;
+  box-shadow: 0 0 25px #6c757d;
+}
+
+.results-section {
+      display: none;
+      text-align: center;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #b7e0ff;
+      text-shadow: 0 0 10px #00aaffdd;
+      padding: 2rem 1rem;
+}
