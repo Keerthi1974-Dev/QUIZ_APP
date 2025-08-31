@@ -9,8 +9,7 @@ The Quiz App is an interactive and visually engaging web application designed to
 - Beautiful animated background
 
 ## Live Demo
-👉 https://github.com/Keerthi1974-Dev/QUIZ_APP
-
+<img width="1904" height="877" alt="Image" src="https://github.com/user-attachments/assets/4e9c0021-7575-4f64-bf60-d3ae0c4dff4b" />
 
 
 
